@@ -1,0 +1,28 @@
+{
+  "name": "react-japan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "react-scripts build",
+    "start": "react-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kohzuki-Nanako/react-japan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kohzuki-Nanako/react-japan/issues"
+  },
+  "homepage": "https://github.com/Kohzuki-Nanako/react-japan#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "react-scripts": "^4.0.1"
+  }
+}
