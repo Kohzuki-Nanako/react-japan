@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "start": "react-scripts start"
   },
@@ -17,12 +18,25 @@
   "bugs": {
     "url": "https://github.com/Kohzuki-Nanako/react-japan/issues"
   },
-  "homepage": "https://github.com/Kohzuki-Nanako/react-japan#readme",
+  "homepage": "https://Kohzuki-Nanako.github.io/react-japan/",
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "gh-pages": "^3.1.0",
     "react-scripts": "^4.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
