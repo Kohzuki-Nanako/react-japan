@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-japan"]=this["webpackJsonpreact-japan"]||[]).push([[0],{9:function(e,t,c){"use strict";c.r(t);var n=c(0),r=c(3);var a=function(){return Object(n.jsx)("div",{children:Object(n.jsx)("h1",{children:"Hello, World!"})})};Object(r.render)(Object(n.jsx)(a,{}),document.querySelector("#content"))}},[[9,1,2]]]);
+//# sourceMappingURL=main.03b89f70.chunk.js.map
