@@ -18,8 +18,9 @@
   "bugs": {
     "url": "https://github.com/Kohzuki-Nanako/react-japan/issues"
   },
-  "homepage": "https://Kohzuki-Nanako.github.io/react-japan/",
+  "homepage": "https://react-jpranking.netlify.app",
   "dependencies": {
+    "bulma": "^0.9.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
