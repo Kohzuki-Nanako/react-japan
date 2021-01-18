@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-japan"]=this["webpackJsonpreact-japan"]||[]).push([[0],{10:function(e,c,t){"use strict";t.r(c);var n=t(0),r=t(3);t(1);var s=function(){return Object(n.jsxs)("div",{children:[Object(n.jsx)("h1",{children:"Hello, World!\u306a\u3093\u3067\u3084\u306d\u3093"}),Object(n.jsx)("h3",{children:"\uff14\uff10\uff14\u306b\u306a\u3063\u3066\u3057\u307e\u3044\u307e\u3059"})]})};t(9);Object(r.render)(Object(n.jsx)(s,{}),document.querySelector("#content"))}},[[10,1,2]]]);
-//# sourceMappingURL=main.e7b80b9d.chunk.js.map
