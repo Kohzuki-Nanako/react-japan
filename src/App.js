@@ -1,6 +1,7 @@
+const style1 = { backgroundImage: `url(${background})` }
 const Hero = () => {
   return (
-      <section className = "hero is-fluid is-danger">
+      <section className = "hero is-primary" style={style1}>
           <div className = "hero-body">
               <div className = "container has-text-centered s-divider">
                   <h1 className = "title">
@@ -55,10 +56,24 @@ const Button = () => {
       </body>
   );
 }
+
+const HP = () => {
+  return (
+    <body>
+            <section class="section">
+                <div class="container has-text-centered">
+                    <h1 class="title">データ元</h1>
+                    <h2 class="subtitle">参考データは...</h2>
+                </div>
+            </section>
+        </body>
+  );
+  }
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
 import { areaRadial } from "d3";
+import background from './media/3_kantou6__tokyo.png'
 const ChoroplethMap = ({ features }) => {
 const width = 700;
 const height = 800;
@@ -100,10 +115,36 @@ return <ChoroplethMap features={features} />;
 };
 const App = () => {
   return (
-    <div>
-      <Hero />
-      <Button />
-      <AboutMap />
+    <div>      
+      <Hero />     
+       <div class="notification is-primary">
+         <div class="tile is-ancestor">
+         <div class="tile is-vertical is-8">         
+           <div class="tile is-parent">
+             <article class="tile is-child box">
+               <p class="title">Wide tile</p>
+               <p class="subtitle">Aligned with the right tile</p>
+               <div class="content">
+                 <Button />
+                 <AboutMap />
+               </div>
+             </article>
+             </div>
+           </div>
+           <div class="tile is-parent">
+             <article class="tile is-child box">
+             <div class="content">
+               <p class="title">Tall tile</p>
+               <p class="subtitle">With even more content</p>
+               <div class="content">
+                 東京都のHP
+                 <HP />
+               </div>
+             </div>
+             </article>
+           </div>
+         </div>
+       </div>                
       <AboutData />
       <Footer />
     </div>
