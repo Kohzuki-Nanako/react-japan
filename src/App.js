@@ -246,10 +246,18 @@ export const ChoroplethMapPage = () => {
 //地域資源についてのプログラム
 const AboutLocalResources = () => {
   //const rData = RankingData;
+  
 
   const [val, setVal] = React.useState([]);
+  const [isSelected,setIsSelected] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false])
+  const select = ["火力","水力","風力","原子力","太陽光","地熱","米","牛乳","肉用牛","豚","鶏卵","プロイラー","トマト","乳牛","いちご"]
+  
   const handleChange = e => {
     //ONかOFFか
+    let newSelected = isSelected
+    newSelected[select.indexOf(e.target.value)] = !newSelected[select.indexOf(e.target.value)]
+    setIsSelected(newSelected)
+    console.log(isSelected)
     if (val.includes(e.target.value)) {
       // すでに含まれていればOFFしたと判断し、イベント発行元を除いた配列をsetし直す
       setVal(val.filter(item => item !== e.target.value));
@@ -262,6 +270,8 @@ const AboutLocalResources = () => {
   
   const drawGraph = (e) => {
     //日本地図を書くプログラム
+    
+
   }
   return ( 
     <div className="tile is-parent is-vertical">
