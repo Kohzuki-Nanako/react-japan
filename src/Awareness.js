@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
-import { areaRadial } from "d3";
-import RankingData from "./data.json";
 
 //日本地図を描くプログラム
 const ChoroplethMap = ({ features }) => {
@@ -25,26 +23,13 @@ const ChoroplethMap = ({ features }) => {
   const width = 900;
   const height = 900;
   const radius = 25;
+
   const projection = d3
     .geoMercator()
     .scale(1600)
     .center([139.69167, 35.68944])
     .translate([width / 2, height / 2]);
-  //芸能人のみの場合で考えると？
-  const aData = RankingData.data;
-  const actor = aData.map((item) => {
-    const obj = {
-      都道府県: item.都道府県名,
-      芸能人: item.芸能人,
-      x: item.経度,
-      y: item.緯度,
-    };
-    return obj;
-  });
-  //降順にソート
-  const isSorted = actor.sort((a, b) => b["芸能人"] - a.芸能人);
-  //console.log(a);
-
+  
   const path = d3.geoPath().projection(projection);
   const color = d3
     .scaleLinear()
@@ -71,24 +56,6 @@ const ChoroplethMap = ({ features }) => {
     false,
     false,
   ]);
-
-  // const handleChange = (e) => {
-  //   //ONかOFFか
-  //   let newSelected = isSelected;
-  //   newSelected[select.indexOf(e.target.value)] = !newSelected[
-  //     select.indexOf(e.target.value)
-  //   ];
-  //   setIsSelected(newSelected);
-  //   console.log(isSelected);
-  //   if (val.includes(e.target.value)) {
-  //     // すでに含まれていればOFFしたと判断し、イベント発行元を除いた配列をsetし直す
-  //     setVal(val.filter((item) => item !== e.target.value));
-  //   } else {
-  //     // そうでなければONと判断し、イベント発行元を末尾に加えた配列をsetし直す
-  //     setVal([...val, e.target.value]);
-  //     // stateは直接は編集できない( = val.push(e.target.value) はNG)
-  //   }
-  // };
 
   useEffect(() => {
     async function fetchData(dataUrl) {
@@ -140,81 +107,6 @@ const ChoroplethMap = ({ features }) => {
             })}
           </div>
         </div>
-        {/* <label>
-              <input
-                type="checkbox"
-                value="Youtube登録者数"
-                onChange={handleChange}
-                checked={val.includes("Youtube登録者数")}
-              />
-              Youtube登録者数
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="Youtube最高再生数"
-                onChange={handleChange}
-                checked={val.includes("Youtube最高再生数")}
-              />
-              Youtube最高再生数
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="Twitterフォロワー数"
-                onChange={handleChange}
-                checked={val.includes("Twitterフォロワー数")}
-              />
-              Twitterフォロワー数
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="Twitterツイート数"
-                onChange={handleChange}
-                checked={val.includes("Twitterツイート数")}
-              />
-              Twitterツイート数
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="Twitter開始年月"
-                onChange={handleChange}
-                checked={val.includes("Twitter開始年月")}
-              />
-              Twitter開始年月
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="全国国内線乗降客数"
-                onChange={handleChange}
-                checked={val.includes("全国国内線乗降客数")}
-              />
-              全国国内線乗降客数
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                value="外国人訪問率"
-                onChange={handleChange}
-                checked={val.includes("外国人訪問率")}
-              />
-              外国人訪問率
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="芸能人"
-                onChange={handleChange}
-                checked={val.includes("芸能人")}
-              />
-              芸能人
-            </label>
-            <p>選択値：{val.join(", ")}</p>
-            <button type="reset">描画</button> */}
       </form>
 
       <svg width={width} height={height}>
@@ -324,8 +216,6 @@ const ChoroplethMap = ({ features }) => {
           </text>
         </g>
         {/*〜印の大きさについて*/}
-
-        {/*印（芸能人のみの場合）*/}
         <g>
           {selected.length !== 0 &&
             data.map((item, index) => {
@@ -377,46 +267,7 @@ const ChoroplethMap = ({ features }) => {
                 />
               );
             })}
-          {/* {actor.map((item, i) => {
-            //x=経度 y=緯度
-            const x = projection([actor[i].x, actor[i].y])[0];
-            const y = projection([actor[i].x, actor[i].y])[1];
-            let r = 0;
-            let color = "red";
-            let j = 0;
-            while (actor[i].芸能人 != isSorted[j].芸能人) {
-              j += 1;
-            }
-            if (j == 0) {
-              r = radius - 5;
-              color = "red";
-            } else if (j == 1) {
-              r = radius - 5;
-              color = "blue";
-            } else if (j == 2) {
-              r = radius - 5;
-              color = "yellow";
-            } else if (2 < j && j < 10) {
-              r = radius - 10;
-              color = "black";
-            } else if (9 < j && j < 20) {
-              r = radius - 15;
-              color = "black";
-            } else if (19 < j && j < 30) {
-              r = radius - 18;
-              color = "black";
-            } else if (29 < j && j < 40) {
-              r = radius - 20;
-              color = "black";
-            } else {
-              r = radius - 22;
-              color = "black";
-            }
-            //console.log(x,y);
-            return <circle cx={x} cy={y} r={r} fill={color} opacity="0.5" />;
-          })} */}
         </g>
-        {/*〜印（芸能人のみの場合）*/}
       </svg>
     </div>
   );

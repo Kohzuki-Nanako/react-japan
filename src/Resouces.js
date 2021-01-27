@@ -6,24 +6,33 @@ import RankingData from "./data.json";
 
 //日本地図を描くプログラム
 const ChoroplethMap = ({ features }) => {
+  const [data, setData] = useState([]);
+  const [selected, setSelected] = useState([]);
+
+  const dataUrl = `${process.env.PUBLIC_URL}/data/normalized_data.json`;
+
+  const selections = [
+    "米",
+    "牛乳",
+    "肉用牛",
+    "豚",
+    "鶏卵",
+    "ブロイラー",
+    "トマト",
+    "乳牛",
+    "いちご",
+    "火力",
+    "水力",
+    "風力",
+    "原子力",
+    "太陽光",
+    "地熱",
+  ];
+
   const width = 900;
   const height = 900;
   const radius = 25;
-
-  //米のみの場合で考えると？
-  const rData = RankingData;
-  const rice = rData.map((item) => {
-    const obj = {
-      都道府県: item.都道府県名,
-      米: item.米,
-      x: item.経度,
-      y: item.緯度,
-    };
-    return obj;
-  });
-  //降順にソート
-  const r = rice.sort((a, b) => b.米 - a.米);
-  //console.log(r);
+  
   const projection = d3
     .geoMercator()
     .scale(1600)
@@ -35,206 +44,59 @@ const ChoroplethMap = ({ features }) => {
     .domain(d3.extent(features, (feature) => feature.properties.value))
     .range(["#ccc", "#0f0"]);
 
-  //印
+  
+  useEffect(() => {
+    async function fetchData(dataUrl) {
+      const res = await fetch(dataUrl);
+      const json = await res.json();
+      const data = json.data;
 
-  const [val, setVal] = React.useState([]);
-  const [isSelected, setIsSelected] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
-  const select = [
-    "火力",
-    "水力",
-    "風力",
-    "原子力",
-    "太陽光",
-    "地熱",
-    "米",
-    "牛乳",
-    "肉用牛",
-    "豚",
-    "鶏卵",
-    "プロイラー",
-    "トマト",
-    "乳牛",
-    "いちご",
-  ];
-
-  const handleChange = (e) => {
-    //ONかOFFか
-    let newSelected = isSelected;
-    newSelected[select.indexOf(e.target.value)] = !newSelected[
-      select.indexOf(e.target.value)
-    ];
-    setIsSelected(newSelected);
-    console.log(isSelected);
-    if (val.includes(e.target.value)) {
-      // すでに含まれていればOFFしたと判断し、イベント発行元を除いた配列をsetし直す
-      setVal(val.filter((item) => item !== e.target.value));
-    } else {
-      // そうでなければONと判断し、イベント発行元を末尾に加えた配列をsetし直す
-      setVal([...val, e.target.value]);
-      // stateは直接は編集できない( = val.push(e.target.value) はNG)
+      setData(data);
     }
-  };
+
+    fetchData(dataUrl);
+  }, []);
+
+  useEffect(() => {
+    setData((prev) => [
+      ...prev.sort((a, b) => {
+        return (
+          selected.reduce((acc, cur) => acc + b[cur].normalizedValue, 0) -
+          selected.reduce((acc, cur) => acc + a[cur].normalizedValue, 0)
+        );
+      }),
+    ]);
+  }, [selected]);
+  
   return (
-    <div className="tile is-parent is-vertical">
-      <article className="tile is-child notification is-grey has-text-centered">
-        <div>
-          <form onreset="reset">
-            <label>
-              <input
-                type="checkbox"
-                value="火力"
-                onChange={handleChange}
-                checked={val.includes("火力")}
-              />
-              火力
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="水力"
-                onChange={handleChange}
-                checked={val.includes("水力")}
-              />
-              水力
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="風力"
-                onChange={handleChange}
-                checked={val.includes("風力")}
-              />
-              風力
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="原子力"
-                onChange={handleChange}
-                checked={val.includes("原子力")}
-              />
-              原子力
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="太陽光"
-                onChange={handleChange}
-                checked={val.includes("太陽光")}
-              />
-              太陽光
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="地熱"
-                onChange={handleChange}
-                checked={val.includes("地熱")}
-              />
-              地熱
-            </label>
-            <br />
-            <label>
-              <input
-                type="checkbox"
-                value="米"
-                onChange={handleChange}
-                checked={val.includes("米")}
-              />
-              米
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="牛乳"
-                onChange={handleChange}
-                checked={val.includes("牛乳")}
-              />
-              牛乳
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="肉用牛"
-                onChange={handleChange}
-                checked={val.includes("肉用牛")}
-              />
-              肉用牛
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="豚"
-                onChange={handleChange}
-                checked={val.includes("豚")}
-              />
-              豚
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="鶏卵"
-                onChange={handleChange}
-                checked={val.includes("鶏卵")}
-              />
-              鶏卵
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="プロイラー"
-                onChange={handleChange}
-                checked={val.includes("プロイラー")}
-              />
-              プロイラー
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="トマト"
-                onChange={handleChange}
-                checked={val.includes("トマト")}
-              />
-              トマト
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="乳牛"
-                onChange={handleChange}
-                checked={val.includes("乳牛")}
-              />
-              乳牛
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                value="いちご"
-                onChange={handleChange}
-                checked={val.includes("いちご")}
-              />
-              いちご
-            </label>
-            <p>選択値：{val.join(", ")}</p>
-          </form>
+    <div className="box">
+      <form>
+        <div className="field">
+          <div className="control">
+            {selections.map((selection) => {
+              return (
+                <label className="label" key={selection}>
+                  <input
+                    type="checkbox"
+                    value={selection}
+                    onChange={(e) =>
+                      setSelected((prev) => {
+                        if (e.target.checked) {
+                          return prev.concat(e.target.value);
+                        } else {
+                          return prev.filter((item) => item !== e.target.value);
+                        }
+                      })
+                    }
+                  />
+                  {selection}
+                </label>
+              );
+            })}
+          </div>
         </div>
-      </article>
+      </form>
+
       <svg width={width} height={height}>
         <g>
           {features.map((feature, i) => (
@@ -331,18 +193,58 @@ const ChoroplethMap = ({ features }) => {
           </text>
         </g>
         {/*〜印の大きさについて*/}
-
-        {/*印（米のみの場合）*/}
         <g>
-          {rice.map((item, i) => {
-            //x=経度 y=緯度
-            const x = projection([rice[i].x, rice[i].y])[0];
-            const y = projection([rice[i].x, rice[i].y])[1];
-            //console.log(x,y);
-            return <circle cx={x} cy={y} r={radius} fill="red" opacity="0.5" />;
-          })}
+          {selected.length !== 0 &&
+            data.map((item, index) => {
+              const x = projection([
+                data[index]["経度"],
+                data[index]["緯度"],
+              ])[0];
+              const y = projection([
+                data[index]["経度"],
+                data[index]["緯度"],
+              ])[1];
+
+              let r = 0;
+              let color = "red";
+
+              if (index == 0) {
+                r = radius - 5;
+                color = "red";
+              } else if (index == 1) {
+                r = radius - 5;
+                color = "blue";
+              } else if (index == 2) {
+                r = radius - 5;
+                color = "yellow";
+              } else if (index <= 10) {
+                r = radius - 10;
+                color = "black";
+              } else if (index <= 20) {
+                r = radius - 15;
+                color = "black";
+              } else if (index <= 30) {
+                r = radius - 18;
+                color = "black";
+              } else if (index <= 40) {
+                r = radius - 20;
+                color = "black";
+              } else {
+                r = radius - 22;
+                color = "black";
+              }
+              return (
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={r}
+                  fill={color}
+                  opacity="0.5"
+                  key={item["都道府県名"]}
+                />
+              );
+            })}
         </g>
-        {/*〜印（米のみの場合）*/}
       </svg>
     </div>
   );
