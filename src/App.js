@@ -106,7 +106,7 @@ const HP = () => {
         { name: "熊本", url: "http://www.pref.kumamotp.jp/" },
         { name: "大分", url: "http://www.pref.oita.jp/" },
         { name: "宮崎", url: "http://www.pref.miyazaki.jp/" },
-        { neme: "鹿児島", url: "http://www.pref.kagoshima.jp/index2.html" },
+        { neme: "鹿児島", url: "http://www.pref.kagoshima.jp/index2.htmlÏ" },
         { neme: "沖縄", url: "https://www.pref.okinawa.jp/" },
       ],
     },
@@ -155,20 +155,12 @@ const AboutData = () => {
               </a>
             </div>
             <div className="column">
-              <a
-                href={
-                  "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%86%E3%83%AC%E3%83%93%E3%83%89%E3%83%A9%E3%83%9E%E4%B8%80%E8%A6%A7_(2020%E5%B9%B4%E4%BB%A3)"
-                }
-              >
+              <a　href={"https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%86%E3%83%AC%E3%83%93%E3%83%89%E3%83%A9%E3%83%9E%E4%B8%80%E8%A6%A7_(2020%E5%B9%B4%E4%BB%A3)"}>
                 {"●日本のテレビドラマ一覧 (2020年代)"}
               </a>
             </div>
             <div className="column">
-              <a
-                href={
-                  "https://www.maff.go.jp/j/tokei/kouhyou/nougyou_sansyutu/"
-                }
-              >
+              <a href={"https://www.maff.go.jp/j/tokei/kouhyou/nougyou_sansyutu/"}>
                 {"●農林水産省"}
               </a>
               <br/>
@@ -248,12 +240,12 @@ const App = () => {
                     </Link>
                     <Link to="/local" style={{ textDecoration: "none" }}>
                       <button className="button is-primary is-large is-outlined">
-                        <p className="title is-1">2 地域資源</p>~農作物など~
+                        <p className="title is-1">2 地域資源</p>
                       </button>
                     </Link>
                     <Link to="/awareness" style={{ textDecoration: "none" }}>
                       <button className="button is-danger is-large is-outlined">
-                        <p className="title is-1">3 認知度</p> ~SNSなど~
+                        <p className="title is-1">3 認知度</p>
                       </button>
                     </Link>
                     <Route path="/" exact>
