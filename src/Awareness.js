@@ -38,24 +38,6 @@ const ChoroplethMap = ({ features }) => {
 
   //印
 
-  const [val, setVal] = React.useState([]);
-  const [isSelected, setIsSelected] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
 
   useEffect(() => {
     async function fetchData(dataUrl) {
@@ -110,7 +92,7 @@ const ChoroplethMap = ({ features }) => {
       </form>
 
       <svg width={width} height={height}>
-        <g>
+        <g> 
           {features.map((feature, i) => (
             <path
               key={i}
@@ -164,7 +146,7 @@ const ChoroplethMap = ({ features }) => {
             cx={width - 200}
             cy={height - 300}
             r={radius - 10}
-            fill="black"
+            fill="pink"
             opacity="0.5"
           />
           <text x={width - 195 + radius - 10} y={height - 294} fontSize="20">

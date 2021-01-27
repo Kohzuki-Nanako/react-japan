@@ -61,7 +61,7 @@ const HP = () => {
         { name: "福井", url: "http://www.pref.hukui.jp/" },
         { name: "山梨", url: "http://www.pref.yamanashi.jp/" },
         { name: "長野", url: "http://www.pref.nagano.jp/" },
-        { neme: "岐阜", url: "http://www.pref.gifu.jp/" },
+        { neme: "岐阜", url: "https://www.pref.gifu.lg.jp/"},
         { name: "静岡", url: "http://www.pref.shizuoka.jp/" },
         { name: "愛知", url: "http://www.pref.aichi.jp/" },
       ],
@@ -75,7 +75,7 @@ const HP = () => {
         { name: "大阪", url: "http://www.pref.osaka.jp/" },
         { name: "兵庫", url: "http://www.pref.hyogo.jp/" },
         { name: "奈良", url: "http://www.pref.nara.jp/" },
-        { neme: "和歌山", url: "http://www.pref.wakayama.jp/" },
+        { neme: "和歌山", url: "https://www.pref.wakayama.lg.jp/" },
       ],
     },
     {
@@ -106,8 +106,8 @@ const HP = () => {
         { name: "熊本", url: "http://www.pref.kumamotp.jp/" },
         { name: "大分", url: "http://www.pref.oita.jp/" },
         { name: "宮崎", url: "http://www.pref.miyazaki.jp/" },
-        { neme: "鹿児島", url: "http://www.pref.kagpshima.jp/" },
-        { neme: "沖縄", url: "http://www.pref.okinawa.jp/..." },
+        { neme: "鹿児島", url: "http://www.pref.kagoshima.jp/index2.html" },
+        { neme: "沖縄", url: "https://www.pref.okinawa.jp/" },
       ],
     },
   ];
@@ -151,16 +151,16 @@ const AboutData = () => {
           <div className="columns is-desktop">
             <div className="column">
               <a href={"http://airport.tokyu-agc.co.jp/airport_1_1.html"}>
-                {"全国空港乗降客数一覧"}
+                {"●全国空港乗降客数一覧"}
               </a>
             </div>
             <div className="column">
               <a
                 href={
-                  "https://www.sangyo.net/contents/myagri/regional-agriculture.html"
+                  "https://ja.wikipedia.org/wiki/%E6%97%A5%E6%9C%AC%E3%81%AE%E3%83%86%E3%83%AC%E3%83%93%E3%83%89%E3%83%A9%E3%83%9E%E4%B8%80%E8%A6%A7_(2020%E5%B9%B4%E4%BB%A3)"
                 }
               >
-                {"主な農畜産物の産出額ランキング"}
+                {"●日本のテレビドラマ一覧 (2020年代)"}
               </a>
             </div>
             <div className="column">
@@ -169,13 +169,50 @@ const AboutData = () => {
                   "https://www.maff.go.jp/j/tokei/kouhyou/nougyou_sansyutu/"
                 }
               >
-                {"農林水産省"}
+                {"●農林水産省"}
+              </a>
+              <br/>
+              <a href={"https://www.enecho.meti.go.jp/statistics/electric_power/ep002/results.html"}>
+                {"●経済産業省　資源エネルギー庁"}
+              </a>
+              <br/>
+              <a href={"https://www.sangyo.net/contents/myagri/regional-agriculture.html"}>
+                {"●データからみる地域の農業"}
               </a>
             </div>
             <div className="column">
               <a href={"https://www.e-stat.go.jp/"}>
-                {"政府統計の窓口e - Stat"}
+                {"●政府統計の窓口e - Stat"}
               </a>
+              <br/>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500215&tstat=000001013427&cycle=7&tclass1=000001032288&tclass2=000001032753&tclass3=000001137506&cycle_facet=tclass1%3Atclass2%3Acycle&tclass4val=0"}>
+                {"水稲　"}
+              </a>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500225&tstat=000001015114&cycle=7&year=20180&month=0&tclass1=000001015842&tclass2=000001131883"}>
+                {"牛乳　"}
+              </a>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500215&tstat=000001013427&cycle=7&year=20190&month=0&tclass1=000001032286&tclass2=000001032933&tclass3=000001147186&stat_infid=000032029637&tclass4val=0"}>
+                {"トマト　"}
+              </a>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500215&tstat=000001013427&cycle=7&year=20190&month=0&tclass1=000001032286&tclass2=000001032933&tclass3=000001147186"}>
+                {"いちご　"}
+              </a>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500222&tstat=000001015614&cycle=7&year=20190&month=0&tclass1=000001020206&tclass2=000001134566&stat_infid=000031878390&tclass3val=0"}>
+                {"鶏卵　"}
+              </a>
+              <br/>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500222&tstat=000001015614&cycle=7&year=20190&month=0&tclass1=000001020206&tclass2=000001134566&stat_infid=000031878393&tclass3val=0"}>
+                {"ブロイラー　"}
+              </a>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500222&tstat=000001015614&cycle=7&year=20200&month=0&tclass1=000001020206&tclass2=000001147187"}>
+                {"肉用牛　"}
+              </a>
+              <a href={"https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00500222&tstat=000001015614&cycle=7&year=20190&month=0&tclass1=000001020206&tclass2=000001134566"}>
+                {"豚　"}
+              </a>
+              <br/>
+              <br/>
+              <br/>
             </div>
           </div>
         </div>
@@ -191,19 +228,7 @@ import { AboutAwareness } from "./Awareness";
 import background1 from "./media/3_kantou6__tokyo.png";
 import background2 from "./media/fukidashi10.png";
 
-// function fuga() {
-//   return (
-//     <Router>
-//       <Hero />
-//       <div className='notification is-primary'>
-//         <div className='box'>
-//           <div className='content'>
-//           </div>
-//           </div>
-//         </div>
-//       </Router>
-//   )
-// }
+
 
 const App = () => {
   return (
@@ -211,7 +236,7 @@ const App = () => {
       <Hero />
       <div className="notification is-primary">
         <div className="tile is-ancestor">
-          <div className="tile is-vertical is-10">
+          <div className="tile is-vertical is-9">
             <div className="tile is-parent">
               <article className="tile is-child box">
                 <div className="content">
