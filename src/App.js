@@ -288,7 +288,6 @@ const AboutData = () => {
               </a>
               <br />
               <br />
-              <br />
             </div>
           </div>
         </div>
@@ -310,7 +309,7 @@ const App = () => {
                   <section className="section">
                     <Link to="/" style={{ textDecoration: "none" }}>
                       <button className="button is-link is-large is-outlined">
-                        <p className="title is-1">1　 総合点　 </p>
+                        <p className="title is-1">1　 総合点　</p>
                       </button>
                     </Link>
                     <Link to="/local" style={{ textDecoration: "none" }}>
@@ -320,7 +319,7 @@ const App = () => {
                     </Link>
                     <Link to="/awareness" style={{ textDecoration: "none" }}>
                       <button className="button is-danger is-large is-outlined">
-                        <p className="title is-1">3 　認知度 　</p>
+                        <p className="title is-1">3 　認知度　</p>
                       </button>
                     </Link>
                     <br />
