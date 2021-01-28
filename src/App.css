@@ -1,0 +1,8 @@
+.text9 {
+  font-size: 3.3em;
+  color: #ffffff;
+  text-shadow: 1.5px 1.5px 1px #808080,
+             -1.5px 1.5px 1px #808080,
+             1.5px -1.5px 1px #808080,
+             -1.5px -1.5px 1px #808080;
+}
