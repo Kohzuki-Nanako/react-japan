@@ -309,7 +309,7 @@ const App = () => {
                   <section className="section">
                     <Link to="/" style={{ textDecoration: "none" }}>
                       <button className="button is-link is-large is-outlined">
-                        <p className="title is-1">1　 総合点　</p>
+                        <p className="title is-1">1　総合点　</p>
                       </button>
                     </Link>
                     <Link to="/local" style={{ textDecoration: "none" }}>
