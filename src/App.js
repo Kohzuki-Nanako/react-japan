@@ -319,7 +319,7 @@ const App = () => {
                     </Link>
                     <Link to="/awareness" style={{ textDecoration: "none" }}>
                       <button className="button is-danger is-large is-outlined">
-                        <p className="title is-1">3 　認知度　</p>
+                        <p className="title is-1">3　認知度　</p>
                       </button>
                     </Link>
                     <br />
